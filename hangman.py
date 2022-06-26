@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import random
-import re
 import string
+import time
+
 
 """
 If the letter guessed is in the difference between the two SETS,
@@ -46,15 +47,7 @@ def get_proper_word(_words):
 
     return word
 
-def user_input():
-    """
-    Gets user input via GUI
-    ________________________________
-    INPUTS:
-
-    """
-
-def hangman(_limbs):
+def hangman(_limbs: int) -> None:
     """
     HANGMAN GAME
     ----------------------------------------------------
@@ -66,20 +59,24 @@ def hangman(_limbs):
     used: (set) Empty set to keep track of what the user has already guessed
     """
     
-    word = get_proper_word(words)
+    word = get_proper_word(words).upper()
     # Letters in the WORD
     word_letters = set(word)
     alphabet = set(string.ascii_uppercase)
     used = set()
 
-    # USER INPUT
+    # USER INPUT 
+   
     while len(word_letters) > 0 and _limbs > 0:
 
-        print(f"""You have {_limbs} limbs left!
-              \nSo far you've guessed the letters:\n
-              """, ''.join(used))
+        if len(used) != 0:
+            print(f"""\n
+You have {_limbs} limbs left!
+Letters already guessed:
+                  """, ''.join(used))
 
-        
+        # To ensure that repeated letter in WORD are still being tracked, since
+        # SET removes duplicates
         letter_display = [letter if letter in used else '-' for letter in word]
         print("Currently, your word is: ", ' '.join(letter_display))
 
@@ -88,22 +85,54 @@ def hangman(_limbs):
             used.add(user_letter)
 
             if user_letter in word_letters:
-                word_letters.remove(user_letter)
+                word_letters.remove(user_letter)    # Correct guess
+
+            else:                                   # Incorrect guess
+                _limbs -= 1
 
         elif user_letter in used:
-            _limbs = _limbs - 1
-            print(f"\nAlready used {user_letter}... Oops (˵ ͡o ͜ʖ ͡o˵)")
+            print(f"""\n
+================================================================
+Already used {user_letter}... Oops (˵ ͡o ͜ʖ ͡o˵)
+================================================================
+                  """)
 
         else:
-            print("\nYou've typed an invalid character...\nLo Siento...( ͡° ͜ʖ ͡°)")
+            print("""\n
+================================================================
+You've typed an invalid character...\nLo Siento...( ͡° ͜ʖ ͡°)
+================================================================
+                  \n""")
 
     # Conclusion of Hangman Game:
     if _limbs == 0:
         print("\nLo Siento... YOU ARE DEAD! ༼ಢ_ಢ༽")
+        time.sleep(3)
+        print(
+            f"""\n
+================================================================
+            The Word is: {word}
+================================================================
+            """
+        )
 
     else:
-        print("YAY!! YOU GUESSED THE CORRECT WORD!  ̿̿ ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿")
+        print(
+            """
+================================================================
+
+ ̿̿ ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿  ٩ (╬ʘ益ʘ╬) ۶ ٩ (╬ʘ益ʘ╬) ۶
+(◣_(◣_(◣_◢)_◢)_◢)   ( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°) ヾ(☆▽☆) ヾ(☆▽☆)
+
+                    !!!! CORRECT !!!!
+
+(ノಠ益ಠ)ノ彡┻━┻ (ノಠ益ಠ)ノ彡┻━┻ (ノಠ益ಠ)ノ彡┻━┻ (ノಠ益ಠ)ノ彡┻━┻
+
+================================================================
+            """
+        )
 
 
 if __name__ == "__main__":
-    hangman(int(input("How many LIMBS on the hangan do you want?:\n")))
+    hangman(int(input("How many LIMBS on the hangman do you want?:\n")))
+    
