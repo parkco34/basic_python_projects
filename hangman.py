@@ -19,7 +19,8 @@ Game is over when the letters in the WORD reach zero
 
 """ 
 
-with open("words.txt", "r") as file:
+#with open("words.txt", "r") as file:
+with open("most_common_words.txt", "r") as file:
     text = file.read()
     words = list(map(str, text.split()))
 
