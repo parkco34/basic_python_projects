@@ -24,7 +24,7 @@ with open("words.txt", "r") as file:
     words = list(map(str, text.split()))
 
 
-def get_proper_word(_words):
+def get_proper_word(_words: list) -> str:
     """
     Validates the Word to be used in the Hangman game
     and returns the PROPER word, UPPERCASED
