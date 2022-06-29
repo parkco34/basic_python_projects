@@ -33,7 +33,7 @@ class BipolarComputerPlayer(Player):
         return position
 
 
-class HumanWithoutPronoun(Player):
+class HumanWithoutPronouns(Player):
     """
     Player should be able to choose a position on the board based on input
     passed through the terminal, and keep iterating until a valid position is
@@ -52,11 +52,11 @@ class HumanWithoutPronoun(Player):
 
         # So user isn't confused about who's turn it is
         while not valid_move:
-            position = input(self.letter + "\'s turn.\nInput you move:")
+            position = input(self.letter + "\'s turn.\nWhat's your move? (0-9):")
             # Check via casting value to integer, where in the case that it's
             # not, it's an invalid move...
             try:
-                value = int(poistion)
+                value = int(position)
                 if value not in game.moves_left():
                     raise ValueError
 
