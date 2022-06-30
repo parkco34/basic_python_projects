@@ -72,16 +72,21 @@ def hangman(_limbs: int) -> None:
 
         if len(used) != 0:
             print(f"""\n
-You have {_limbs} limbs left!
+++++++++++++++++++++++++++++++++++++++++++++++++++
+LIMBS|
+-----
+You have \n==> {_limbs} <== \n limbs left!
 Letters already guessed:
+++++++++++++++++++++++++++++++++++++++++++++++++++
                   """, ''.join(used))
 
         # To ensure that repeated letter in WORD are still being tracked, since
         # SET removes duplicates
         letter_display = [letter if letter in used else '-' for letter in word]
-        print("Currently, your word is: ", ' '.join(letter_display))
+        print("""\n
+Currently, your word is: """, ' '.join(letter_display))
 
-        user_letter = input("Enter a letter to guess: ").upper()
+        user_letter = input("\nEnter a letter to guess: ").upper()
         if user_letter in (alphabet - used):
             used.add(user_letter)
 
@@ -135,5 +140,8 @@ You've typed an invalid character...\nLo Siento...( ͡° ͜ʖ ͡°)
 
 
 if __name__ == "__main__":
-    hangman(int(input("How many LIMBS on the hangman do you want?:\n")))
+    hangman(int(input("""
+--------------------------------------------
+\n\n\n\n\nHow many LIMBS on the hangman do you want?:\n
+                      """)))
     

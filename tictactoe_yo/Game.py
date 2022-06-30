@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from Player import *
+#from Player import *                       LEFT OFF AT 57:52 of the YT video
 
 """
 Tic Tac Toe Commmand Line Game:
