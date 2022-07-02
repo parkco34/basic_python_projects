@@ -142,6 +142,6 @@ You've typed an invalid character...\nLo Siento...( ͡° ͜ʖ ͡°)
 if __name__ == "__main__":
     hangman(int(input("""
 --------------------------------------------
-\n\n\n\n\nHow many LIMBS on the hangman do you want?:\n
+\n\n\nHow many LIMBS on the hangman do you want?:\n
                       """)))
-    
+   

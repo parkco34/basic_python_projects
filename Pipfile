@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 ipython = "*"
+kivy = {extras = ["base"], file = "https://github.com/kivy/kivy/archive/master.zip"}
+docutils = "*"
+pygments = "*"
 
 [dev-packages]
 
