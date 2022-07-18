@@ -13,3 +13,4 @@ simple_oop_game/lib/
 simple_oop_game/include/
 share/
 pipfile
+Pipfile.lock
