@@ -6,3 +6,8 @@ src/
 
 pyvenv.cfg
 .python-version
+simple_oop_game/.python-version
+simple_oop_game/pyvenv.cfg
+simple_oop_game/bin/
+simple_oop_game/lib/
+simple_oop_game/include/

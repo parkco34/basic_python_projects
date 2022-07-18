@@ -68,6 +68,7 @@ ___
     * Abyss
     * Dreams
     * Awake
+    * Revenge
     * Window
 
 (*VERBS* included):

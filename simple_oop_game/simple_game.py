@@ -146,7 +146,7 @@ class Awake(MentalState):
         pass
 
 
-class Reveng(MentalState):
+class Revenge(MentalState):
 
     def enter(self):
         pass
@@ -156,6 +156,10 @@ class Window(MentalState):
 
     def enter(self):
         pass
+
+
+class Finished(MentalState):
+    pass
 
 
 
@@ -175,10 +179,20 @@ class Engine(object):
 
         current_mental_state.enter()
 
-
 class Map(object):
 
-    def __init__(self, initial_mental_state):
+    # Class Attributes
+    mental_states = {
+        'abyss': Abyss(),
+        'dreams': Dreams(),
+        'awake': Awake(),
+        'revenge': Revenge(),
+        'window': Window(),
+        'death': Death(),
+        'finished': Finished()
+    }
+
+    def __init__(self, initial_mental_state='abyss'):
         self.initial_mental_state = initial_mental_state
 
     def next_mental_state(self):
@@ -190,4 +204,6 @@ class Map(object):
 
 
 
-
+if __name__ == "__main__":
+    a_game = Map()
+#    breakpoint()
