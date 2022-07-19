@@ -60,81 +60,9 @@ class Death(MentalState):
 
 
 class Abyss(MentalState):
-    # Global Variable
-    global options
-    options = [
-        'exercise',
-        'read',
-        'henri',
-        'drink',
-        'gummies'
-    ]
 
     def enter(self):
-        print(dedent("""
-You regain consciousness only to find yourself in a cold,
-damp basement.  After looking for a way out, you realize
-the only way to escape is through the WINDOW...
-Unfortunately, you're not strong enough to pull it open!
-What's worse, even if you could open it, there's some kind
-of weird puzzle you have to solve before it can open
-completely.
-
-As if you weren't stressed enough, you see a puddle of water in the
-corner.  It's MOVING!  The BASEMENT IS FLOODING!!! No time
-to waste!  We have to figure out how to get out...
-
-(Heavy breathing behind you) A Re-Sister is attacking you!!!
-                     \n"""))
-    
-        print(dedent(f"""\n
-======================================================
- OPTIONS: {options}
-======================================================
-                     \n
-Chose your action:\n"""))
-        action = input("> ").lower()
-   
-        # While loop to ensure user enters correct response
-        while action in options:
-            if action == "exercise":
-                print(dedent("""
-\nYou SWOLE UP, capable of lifting a car.  You
-uppercut the beast in one of its four armpits and
-round house kick the fool in the right temple
-ncompasitating it... You decapitate the S.O.B\n
-                             """))
-                return 'dreams'
-
-            elif action == "read":
-                print(dedent("""
-\nYou pick up an book on Abstract Algebra and attempt
-to read it, but the Re-Sister looks on judgmentally
-and then devours your head clean off your
-shoulders!\n
-                             """))
-                return 'death'
-
-            elif action == 'henri':
-                print(dedent("""
-\nYou start playing with Henri using a bird toy... The
-Creature takes the birdy away from you in jealousy and
-begins playing with the Bengal... it thinks it has a
-friend.  CUTE...
-                             """))
-                return 'superwin'
-
-            elif action == "drink" or "gummies":
-                print(dedent("""
-\nYou turn off the lights and crack open a pint of
-Smirnoff... Time for a stimulating movie!
-                             """))
-                return 'abyss'
-
-            else:
-                print("DOESN'T COMPUTE!")
-                return 'abyss'
-
+        pass
 
 class Dreams(MentalState):
 
@@ -151,35 +79,7 @@ challenges you to a game of WITS!!\n\n
 Guess the Two-DIgit number:\n
 ==================================
                      """))
-        
-        code = f"{randint(1,9)}{randint(1,9)}"
-        guess = input("Enter your guesses here:(2% chance of being correct)\n[keypad]> ")
-        guesses = 0
-        _guesses = []
-
-        while guess != code and guesses < 10:
-
-            if guess != code:
-                print("BEEP BEEP BEEP")
-                _guesses.append(guess) 
-                print(f"Your guesses so far: {_guesses}")
-                print(f"Guesses left: {10-guesses}")
-                guess = input("[keypad]> ")
-
-                if guess in _guesses:
-                    print(f"\nYou already guesses this number...\n")
-
-                elif guess == code:
-                    
-                    return 'awake'
-
-                else:
-                    guesses += 1
-
-            else:
-                print("\nYOU DID I!\n ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/'̿̿ ̿ ̿ ̿ ̿ ̿\n")
-                return 'awake'
-
+        pass        
 
 class Awake(MentalState):
 
@@ -231,16 +131,8 @@ class Engine(object):
         self.mental_map = mental_map
 
     def play(self):
-        current_mental_state = self.mental_map.open_mental_state()
-        last_mental_state = self.mental_map.next_mental_state('finished')
+        pass
 
-        while current_mental_state != last_mental_state:
-            breakpoint()
-            next_state_name = current_mental_state.enter()
-            current_mental_state =\
-            self.mental_map.next_mental_state(next_state_name)
-
-        current_mental_state.enter()
 
 class Map(object):
 
@@ -260,12 +152,10 @@ class Map(object):
 
     # Map class stores each mental_state in a Dict
     def next_mental_state(self, mental_state_name): 
-        val = Map.mental_states.get(mental_state_name)
-        return val
+        pass
 
     def open_mental_state(self):
-        return self.next_mental_state(self.mental_state)
-
+        pass
 
 if __name__ == "__main__":
     a_game = Map()
