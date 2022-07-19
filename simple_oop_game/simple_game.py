@@ -60,6 +60,15 @@ class Death(MentalState):
 
 
 class Abyss(MentalState):
+    # Global Variable
+    global options
+    options = [
+        'exercise',
+        'read',
+        'henri',
+        'drink',
+        'gummies'
+    ]
 
     def enter(self):
         print(dedent("""
@@ -77,7 +86,12 @@ class Abyss(MentalState):
 
         (Heavy breathing behind you) A Re-Sister is attacking you!!!
                      \n"""))
-
+    
+        print(dedent(f"""\n
+========================
+ OPTIONS: {options}
+========================
+                     """))
         action = input("> ").lower()
 
         if action == "exercise":
@@ -143,25 +157,45 @@ class Dreams(MentalState):
 class Awake(MentalState):
 
     def enter(self):
-        pass
+        print("""\n
+              ===========================
+              This be the Awake state...
+              ===========================
+              \n""")
 
 
 class Revenge(MentalState):
 
     def enter(self):
-        pass
+        print("""
+              \n===========================
+              This be the Revenge Class...
+                ===========================
+              \n
+              """)
 
 
 class Window(MentalState):
 
     def enter(self):
-        pass
+        print("""
+              \n
+                ===========================
+              This be the Window class
+                ===========================
+              \n""")
 
 
 class Finished(MentalState):
     
     def enter(self):
-        pass
+        print("""
+              \n
+                ===========================
+              This bet he Finished class
+                ===========================
+              \n
+              """)
 
 
 class Engine(object):
@@ -196,13 +230,21 @@ class Map(object):
     def __init__(self, initial_mental_state='abyss'):
         self.initial_mental_state = initial_mental_state
 
-    def next_mental_state(self):
-        pass
+    # Map class stores each mental_state in a Dict
+    def next_mental_state(self, mental_state_name): 
+        val = Map.mental_states.get(mental_state_name)
+        return val
 
-    def open_mental_state(self, something):
-        pass
+    def open_mental_state(self):
+        return self.next_mental_state(self.initial_mental_state)
 
 
 if __name__ == "__main__":
     a_game = Map()
-#    breakpoint()
+    engine = Engine(a_game)
+    breakpoint()
+
+
+
+
+
