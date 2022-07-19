@@ -13,7 +13,7 @@ class MentalState(object):
 
 class Death(MentalState):
 
-    quips = [
+    death_rattles = [
 
     """Every adversity, every failure, every heartache carries with it the
     seed of an equal or greater benefit.
@@ -54,7 +54,7 @@ class Death(MentalState):
     ]
 
     def enter(self):
-        print(Death.quips[randint(0, len(self.quips)-1)])
+        print(Death.death_rattles[randint(0, len(self.death_rattles)-1)])
         exit(1)
 
 
@@ -159,8 +159,9 @@ class Window(MentalState):
 
 
 class Finished(MentalState):
-    pass
-
+    
+    def enter(self):
+        pass
 
 
 class Engine(object):
@@ -200,8 +201,6 @@ class Map(object):
 
     def open_mental_state(self, something):
         pass
-
-
 
 
 if __name__ == "__main__":

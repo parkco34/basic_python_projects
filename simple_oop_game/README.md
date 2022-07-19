@@ -9,7 +9,7 @@ escape.  You're too weak and stupid to open it right now, though...
 It's a Basement that is composed
 of heirarchies representing your MENTAL STATE.
 
-   Beginning at the ABYSS level, with minimum HEALTH made up of pHYSICAL,
+   Beginning at the ABYSS level, with minimum HEALTH made up of PHYSICAL,
     MENTAL, and HENRI.  The first enemy you encounter, the Re-Sister, must be
     fought in order to go on to the next MIND STATE, and so on until you
     eventually reach the WINDOW...  There are THREE main BOSSES in which block
@@ -91,50 +91,50 @@ ___
 
 ## Pseudocode: (Skeletal and TOP-DOWN Approach)
 
-class MentalState
-    
-    def enter
+    class MentalState
+        
+        def enter
 
 
-class Engine
+    class Engine
 
-    constructor(MAP_OBJECT)
-    
-    def play
-
-
-class Death(MentalState)
-
-    def enter
+        constructor(MAP_OBJECT)
+        
+        def play
 
 
-class Abyss(MentalState)
+    class Death(MentalState)
 
-    def enter
-
-
-class Dreams(MentalState)
-
-    def enter
+        def enter
 
 
-class Revenge(MentalState)
+    class Abyss(MentalState)
 
-    def enter
-
-
-class Window(MentalState)
-
-    def enter
+        def enter
 
 
-class Map
+    class Dreams(MentalState)
 
-    constructor(MentalState_Object)
+        def enter
 
-    def next_mental_state
 
-    def open_mental_state
+    class Revenge(MentalState)
+
+        def enter
+
+
+    class Window(MentalState)
+
+        def enter
+
+
+    class Map
+
+        constructor(MentalState_Object)
+
+        def next_mental_state
+
+        def open_mental_state
 
 
 ## Repeatand Refine:
