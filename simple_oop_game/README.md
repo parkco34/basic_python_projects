@@ -1,4 +1,5 @@
 # MyGame
+
 > The goal of this game is to escape the BASEMENT by improving your mental health in a such a way, you become strong enough to escape before the clock runs out.  Otherwise you're DEAD.
 
 ## SYNOPSIS:

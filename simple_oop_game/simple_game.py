@@ -70,6 +70,7 @@ class Abyss(MentalState):
         'gummies'
     ]
 
+    # Enters a Mental State
     def enter(self):
         print(dedent("""
 You regain consciousness only to find yourself in a cold,
@@ -92,93 +93,60 @@ to waste!  We have to figure out how to get out...
  OPTIONS: {options}
 ======================================================
                      \n
-Chose your action:\n"""))
-        action = input("> ").lower()
+Choose your action:\n"""))
+        action = input("> \n").lower()
    
         # While loop to ensure user enters correct response
-        while action in options:
-            if action == "exercise":
-                print(dedent("""
+        while action not in options:
+            action = input("You seem to have entered an invalid action.\n\
+                           Please try again, thanx...\n")
+
+
+        if action == "exercise":
+            print(dedent("""
 \nYou SWOLE UP, capable of lifting a car.  You
 uppercut the beast in one of its four armpits and
 round house kick the fool in the right temple
 ncompasitating it... You decapitate the S.O.B\n
-                             """))
-                return 'dreams'
+                         """))
+            return 'dreams'
 
-            elif action == "read":
-                print(dedent("""
+        elif action == "read":
+            print(dedent("""
 \nYou pick up an book on Abstract Algebra and attempt
 to read it, but the Re-Sister looks on judgmentally
 and then devours your head clean off your
 shoulders!\n
-                             """))
-                return 'death'
+                         """))
+            return 'death'
 
-            elif action == 'henri':
-                print(dedent("""
+        elif action == 'henri':
+            print(dedent("""
 \nYou start playing with Henri using a bird toy... The
 Creature takes the birdy away from you in jealousy and
 begins playing with the Bengal... it thinks it has a
 friend.  CUTE...
-                             """))
-                return 'superwin'
+                         """))
+            return 'superwin'
 
-            elif action == "drink" or "gummies":
-                print(dedent("""
+        elif action == "drink" or "gummies":
+            print(dedent("""
 \nYou turn off the lights and crack open a pint of
 Smirnoff... Time for a stimulating movie!
-                             """))
-                return 'abyss'
+                         """))
+            return 'abyss'
 
-            else:
-                print("DOESN'T COMPUTE!")
-                return 'abyss'
+        else:
+            print("DOESN'T COMPUTE!")
+            return 'abyss'
 
 
 class Dreams(MentalState):
 
     def enter(self):
-        # Change this to something more interesting and fun
         print(dedent("""
- \n
-Proud with your little win, you fall deep asleep...
-Falling into an unimaginable HELL some people call
-Dreaming...\n where a monster appears charging you!  It's a
-damn Lieche_ML!!!! NOOOOOOOO!!!!!\nWhat's this??  She
-challenges you to a game of WITS!!\n\n
-==================================
-Guess the Two-DIgit number:\n
-==================================
+
                      """))
-        
-        code = f"{randint(1,9)}{randint(1,9)}"
-        guess = input("Enter your guesses here:(2% chance of being correct)\n[keypad]> ")
-        guesses = 0
-        _guesses = []
-
-        while guess != code and guesses < 10:
-
-            if guess != code:
-                print("BEEP BEEP BEEP")
-                _guesses.append(guess) 
-                print(f"Your guesses so far: {_guesses}")
-                print(f"Guesses left: {10-guesses}")
-                guess = input("[keypad]> ")
-
-                if guess in _guesses:
-                    print(f"\nYou already guesses this number...\n")
-
-                elif guess == code:
-                    
-                    return 'awake'
-
-                else:
-                    guesses += 1
-
-            else:
-                print("\nYOU DID I!\n ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/'̿̿ ̿ ̿ ̿ ̿ ̿\n")
-                return 'awake'
 
 
 class Awake(MentalState):
@@ -214,7 +182,7 @@ class Window(MentalState):
 
 
 class Finished(MentalState):
-    
+    # Enter a Mental State
     def enter(self):
         print("""
               \n
